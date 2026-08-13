@@ -4,199 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GED Mathematics Practice Test</title>
-  <h1>TEACHER - MYA THANDAR 👩🏻‍💻🌹</h1>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#10213d; --navy:#07182f; --amber:#f5b82e; --paper:#fffdf8; --muted:#60708a; --sky:#b9e5fb; }
-    * { box-sizing:border-box; }
-    body { font-family:"DM Sans",sans-serif; color:var(--ink); }
-    button,input,label { -webkit-tap-highlight-color:transparent; }
-    button:focus-visible,input:focus-visible,label:focus-within { outline:3px solid #f5b82e; outline-offset:3px; }
-    .page-shell { min-height:calc(100 * min(var(--vh, 1vh), 1vh)); }
-    .paper-shadow { box-shadow:0 22px 50px rgba(1,14,36,.16); }
-    .choice-option { transition:transform .16s ease,border-color .16s ease,background .16s ease; }
-    .choice-option:hover { transform:translateX(4px); border-color:#9db0c9; }
-    .choice-option.selected { border-color:#10213d; background:#eaf1fa; box-shadow:inset 4px 0 0 #f5b82e; }
-    .nav-dot { transition:all .15s ease; }
-    .nav-dot.current { background:#f5b82e; color:#10213d; border-color:#f5b82e; }
-    .nav-dot.answered:not(.current) { background:#dcebd8; color:#185c33; border-color:#9bcea8; }
-    .fade-in { animation:lift .38s ease both; }
-    .cover-in { animation:coverLift .7s cubic-bezier(.2,.8,.2,1) both; }
-    .cover-in-2 { animation:coverLift .7s .12s cubic-bezier(.2,.8,.2,1) both; }
-    .cover-in-3 { animation:coverLift .7s .24s cubic-bezier(.2,.8,.2,1) both; }
-    .floaty { animation:floaty 4s ease-in-out infinite; }
-    .floaty-late { animation:floaty 4.8s .5s ease-in-out infinite; }
-    @keyframes lift { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes coverLift { from { opacity:0; transform:translateY(22px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
-    @keyframes floaty { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-11px) rotate(3deg); } }
-    .cloud { position:absolute; background:rgba(255,255,255,.92); border-radius:999px; filter:drop-shadow(0 10px 4px rgba(75,134,176,.12)); }
-    .cloud::before,.cloud::after { content:""; position:absolute; background:inherit; border-radius:50%; }
-    .cloud::before { width:57%; height:165%; left:17%; bottom:25%; }
-    .cloud::after { width:48%; height:130%; right:13%; bottom:17%; }
-    .starburst { position:absolute; width:78px; height:78px; border-radius:50%; background:#ffd238; box-shadow:0 0 0 8px rgba(255,210,56,.18); }
-    .starburst::before { content:""; position:absolute; inset:-18px; background:repeating-conic-gradient(from 0deg, #ffc51c 0 4deg, transparent 4deg 28deg); z-index:-1; }
-    @media print { body { display:none!important; } }
+    :root { --ink: #10213d; --navy: #07182f; --amber: #f5b82e; --paper: #fffdf8; --muted: #60708a; }
+    * { box-sizing: border-box; }
+    body { font-family: "DM Sans", sans-serif; color: var(--ink); user-select: none; -webkit-user-select: none; }
+    button, input, label { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, input:focus-visible, label:focus-within { outline: 3px solid #f5b82e; outline-offset: 3px; }
+    .page-shell { min-height: calc(100 * min(var(--vh, 1vh), 1vh)); }
+    .paper-shadow { box-shadow: 0 22px 50px rgba(1, 14, 36, .16); }
+    .choice-option { transition: transform .16s ease, border-color .16s ease, background .16s ease; }
+    .choice-option:hover { transform: translateX(4px); border-color: #9db0c9; }
+    .choice-option.selected { border-color: #10213d; background: #eaf1fa; box-shadow: inset 4px 0 0 #f5b82e; }
+    .nav-dot { transition: all .15s ease; }
+    .nav-dot.current { background: #f5b82e; color: #10213d; border-color: #f5b82e; }
+    .nav-dot.answered:not(.current) { background: #dcebd8; color: #185c33; border-color: #9bcea8; }
+    .fade-in { animation: lift .38s ease both; }
+    @keyframes lift { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media print { body { display: none !important; } }
   </style>
   <script src="/_sdk/0e8d3a91e1c6f495.data_sdk.js" type="text/javascript" integrity="sha512-c00oDoGjsMgluCLLEyVl3suwEkgjOGGplVFbsilUoBg4aMKNmsL3mwsc9r0dPn95qiSZyjBousQXgROkAW7p/w=="></script>
   <script src="/_sdk/eba18683f23e5798.resizing_sdk.js" type="text/javascript" integrity="sha512-E0UWUllhwPXaNJtjyTKXWKrIE+FruPfFpO4mRmMDP2LI+U9bOizy5npCq6xx/JyWcvSK7D3TFf2wFR2Mha9kbA=="></script>
  </head>
  <body data-template-id="__page-root" class="w-full">
   <div class="page-shell w-full bg-[#eaf0f7]">
-   <section id="cover-view" class="relative min-h-[calc(100*min(var(--vh,1vh),1vh))] overflow-hidden bg-[#b9e5fb] px-4 py-7 sm:px-8">
-    <div class="cloud w-36 h-11 left-[-20px] top-[18%]"></div>
-    <div class="cloud w-52 h-16 right-[-45px] top-[21%] opacity-90"></div>
-    <div class="cloud w-40 h-12 left-[7%] bottom-[9%] opacity-80"></div>
-    <div class="cloud w-60 h-16 right-[3%] bottom-[-10px]"></div>
-    <div class="starburst right-[14%] top-[13%] hidden sm:block"></div>
-    <header class="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between">
+   <header data-template-id="test-header" class="canva-header bg-[#07182f] text-white border-b-4 border-[#f5b82e]">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
      <div class="flex items-center gap-3">
-      <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#10213d] text-[#f5b82e] shadow-lg"><i data-lucide="calculator" class="h-6 w-6"></i>
+      <div class="w-11 h-11 rounded-xl bg-[#f5b82e] text-[#07182f] flex items-center justify-center"><i data-lucide="calculator" class="w-6 h-6"></i>
       </div>
-      <p data-template-id="cover-brand" class="canva-text font-extrabold"></p>
-     </div>
-     <div data-template-id="cover-year" class="canva-tag rounded-full border border-white/70 bg-white/55 px-4 py-2 font-bold text-[#24588b]"></div>
-    </header>
-    <main class="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center pt-8 text-center sm:pt-12">
-     <div class="cover-in max-w-3xl">
-      <p data-template-id="cover-kicker" class="canva-text font-bold uppercase tracking-[0.18em] text-[#24588b]"></p>
-      <h1 data-template-id="cover-title" class="canva-text mt-3 font-extrabold leading-tight text-[#10213d]"></h1>
-      <p data-template-id="cover-subtitle" class="canva-text mx-auto mt-4 max-w-xl leading-7 text-[#315575]"></p>
-     </div>
-     <div class="cover-in-2 relative mt-8 w-full max-w-3xl rounded-[2rem] border-4 border-white/80 bg-white/70 p-5 shadow-xl backdrop-blur-sm sm:p-7">
-      <div class="floaty absolute -left-7 -top-9 hidden h-16 w-16 items-center justify-center rounded-2xl bg-[#ff625e] text-3xl shadow-lg sm:flex">
-       🚀
-      </div>
-      <div class="floaty-late absolute -right-6 -top-8 hidden h-16 w-16 items-center justify-center rounded-2xl bg-[#ffd238] text-3xl shadow-lg sm:flex">
-       📚
-      </div>
-      <div class="grid gap-3 sm:grid-cols-2">
-       <article data-template-id="cover-feature-one" class="canva-card rounded-2xl bg-[#ff5c5c] px-5 py-4 text-left text-white shadow-sm">
-        <div class="flex items-center justify-between gap-3">
-         <div>
-          <p data-template-id="cover-feature-one-title" class="canva-text font-extrabold"></p>
-          <p data-template-id="cover-feature-one-copy" class="canva-text mt-1 text-sm text-white/90"></p>
-         </div><i data-lucide="rocket" class="h-8 w-8 shrink-0"></i>
-        </div>
-       </article>
-       <article data-template-id="cover-feature-two" class="canva-card rounded-2xl bg-[#08ad65] px-5 py-4 text-left text-white shadow-sm">
-        <div class="flex items-center justify-between gap-3">
-         <div>
-          <p data-template-id="cover-feature-two-title" class="canva-text font-extrabold"></p>
-          <p data-template-id="cover-feature-two-copy" class="canva-text mt-1 text-sm text-white/90"></p>
-         </div><i data-lucide="clipboard-check" class="h-8 w-8 shrink-0"></i>
-        </div>
-       </article>
-       <article data-template-id="cover-feature-three" class="canva-card rounded-2xl bg-[#398fd0] px-5 py-4 text-left text-white shadow-sm">
-        <div class="flex items-center justify-between gap-3">
-         <div>
-          <p data-template-id="cover-feature-three-title" class="canva-text font-extrabold"></p>
-          <p data-template-id="cover-feature-three-copy" class="canva-text mt-1 text-sm text-white/90"></p>
-         </div><i data-lucide="eye" class="h-8 w-8 shrink-0"></i>
-        </div>
-       </article>
-       <article data-template-id="cover-feature-four" class="canva-card rounded-2xl bg-[#f3a20a] px-5 py-4 text-left text-white shadow-sm">
-        <div class="flex items-center justify-between gap-3">
-         <div>
-          <p data-template-id="cover-feature-four-title" class="canva-text font-extrabold"></p>
-          <p data-template-id="cover-feature-four-copy" class="canva-text mt-1 text-sm text-white/90"></p>
-         </div><i data-lucide="languages" class="h-8 w-8 shrink-0"></i>
-        </div>
-       </article>
-      </div>
-      <div class="mt-6 rounded-2xl border border-[#d5e5ee] bg-white/80 px-5 py-4 text-left">
-       <div class="flex gap-3"><i data-lucide="clock-3" class="mt-0.5 h-5 w-5 shrink-0 text-[#e58f00]"></i>
-        <p data-template-id="cover-note" class="canva-text leading-6 text-[#315575]"></p>
-       </div>
-      </div>
-     </div><button id="start-btn" data-template-id="start-button" type="button" class="canva-button cover-in-3 mt-7 inline-flex items-center gap-3 rounded-2xl px-7 py-4 font-extrabold shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"> <span></span><i data-lucide="arrow-right" class="h-5 w-5"></i> </button>
-    </main>
-   </section>
-   <div id="assessment-view" class="hidden">
-    <header data-template-id="test-header" class="canva-header border-b-4 border-[#f5b82e] bg-[#07182f] text-white">
-     <div class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
-      <div class="flex items-center gap-3">
-       <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f5b82e] text-[#07182f]">
-        <i data-lucide="calculator" class="h-6 w-6"></i>
-       </div>
-       <div>
-        <p data-template-id="header-kicker" class="canva-text font-bold uppercase tracking-[0.18em] text-[#f5b82e]"></p>
-        <h1 data-template-id="test-title" class="canva-text font-extrabold leading-tight"></h1>
-       </div>
-      </div>
-      <div class="flex items-center gap-3">
-       <div class="rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-center">
-        <p data-template-id="timer-label" class="canva-text font-bold uppercase tracking-widest text-slate-300"></p>
-        <p id="timer" class="font-mono text-xl font-bold text-[#f5b82e]" aria-live="polite">01:30:00</p>
-       </div><button id="fullscreen-btn" data-template-id="fullscreen-button" type="button" class="canva-button hidden items-center gap-2 rounded-xl px-4 py-3 font-bold transition hover:bg-[#f5b82e] sm:flex"> <i data-lucide="maximize" class="h-4 w-4"></i><span></span> </button>
+      <div>
+       <p data-template-id="header-kicker" class="canva-text text-[#f5b82e] uppercase tracking-[0.18em] text-xs font-bold"></p>
+       <h1 data-template-id="test-title" class="canva-text font-extrabold leading-tight"></h1>
       </div>
      </div>
-    </header>
-    <main class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
-     <section data-template-id="test-rules" class="canva-banner mb-6 flex gap-3 rounded-2xl border border-[#f3d78f] px-5 py-4"><i data-lucide="shield-alert" class="mt-0.5 h-5 w-5 shrink-0 text-[#9a6500]"></i>
-      <p data-template-id="rules-text" class="canva-text leading-6"></p>
-     </section>
-     <div id="test-view" class="grid items-start gap-6 lg:grid-cols-[1fr_280px]">
-      <section class="paper-shadow overflow-hidden rounded-3xl bg-[#fffdf8]">
-       <div class="flex items-center justify-between gap-4 border-b border-slate-200 px-6 pb-5 pt-7 sm:px-9">
-        <div>
-         <p id="question-count" class="text-xs font-bold uppercase tracking-[0.15em] text-[#60708a]">Question 1 of 60</p>
-         <p data-template-id="question-category" class="canva-text mt-1 font-semibold"></p>
-        </div>
-        <div id="answered-status" class="rounded-full bg-[#edf2f7] px-3 py-1.5 text-xs font-bold text-[#46617d]">
-         Not answered
-        </div>
-       </div>
-       <div id="question-panel" class="fade-in px-6 py-8 sm:px-9 sm:py-10">
-        <h2 id="question-text" class="text-2xl font-bold leading-tight text-[#10213d] sm:text-3xl"></h2>
-        <form id="answer-form" class="mt-8 space-y-3" aria-label="Question answers"></form>
-       </div>
-       <div class="flex items-center justify-between gap-3 border-t border-slate-200 bg-[#f4f7fa] px-6 py-5 sm:px-9"><button id="prev-btn" data-template-id="previous-button" type="button" class="canva-button inline-flex items-center gap-2 rounded-xl border border-[#b8c4d2] px-4 py-3 font-bold disabled:cursor-not-allowed disabled:opacity-40"> <i data-lucide="arrow-left" class="h-4 w-4"></i><span></span> </button> <button id="next-btn" data-template-id="next-button" type="button" class="canva-button inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold"> <span></span><i data-lucide="arrow-right" class="h-4 w-4"></i> </button>
-       </div>
-      </section>
-      <aside class="paper-shadow rounded-3xl bg-white p-5 lg:sticky lg:top-5">
-       <h2 data-template-id="navigator-title" class="canva-text font-extrabold"></h2>
-       <p data-template-id="navigator-helper" class="canva-text mt-1"></p>
-       <div id="question-nav" class="mt-5 grid grid-cols-6 gap-2" aria-label="Question navigation"></div>
-       <div class="mt-6 border-t border-slate-200 pt-5">
-        <div class="mb-3 flex justify-between text-sm"><span data-template-id="progress-label" class="canva-text"></span> <strong id="progress-number" class="text-[#10213d]">0 / 60</strong>
-        </div>
-        <div class="h-2 overflow-hidden rounded-full bg-slate-200">
-         <div id="progress-bar" class="h-full bg-[#f5b82e] transition-all duration-300" style="width:0%"></div>
-        </div><button id="submit-btn" data-template-id="submit-button" type="button" class="canva-button mt-6 w-full rounded-xl py-3.5 font-extrabold"></button>
-       </div>
-      </aside>
+     <div class="flex items-center gap-3">
+      <div class="rounded-xl bg-white/10 border border-white/15 px-4 py-2 text-center">
+       <p data-template-id="timer-label" class="canva-text text-[10px] uppercase tracking-widest text-slate-300 font-bold"></p>
+       <p id="timer" class="font-mono text-xl font-bold text-[#f5b82e]" aria-live="polite">01:30:00</p>
+      </div><button id="fullscreen-btn" data-template-id="fullscreen-button" type="button" class="canva-button hidden sm:flex items-center gap-2 rounded-xl px-4 py-3 font-bold text-sm bg-white text-[#07182f] hover:bg-[#f5b82e] transition"> <i data-lucide="maximize" class="w-4 h-4"></i> <span></span> </button>
      </div>
-     <section id="results-view" class="hidden">
-      <div class="paper-shadow overflow-hidden rounded-3xl bg-[#fffdf8]">
-       <div data-template-id="results-hero" class="canva-banner px-6 py-10 text-center sm:px-10">
-        <p data-template-id="results-kicker" class="canva-text font-bold uppercase tracking-[0.18em]"></p>
-        <h2 data-template-id="results-title" class="canva-text mt-2 font-extrabold"></h2>
-        <div id="score-display" class="mt-6 text-6xl font-extrabold text-[#f5b82e] sm:text-7xl">
-         0%
-        </div>
-        <p id="score-detail" class="mt-3 font-medium text-slate-200"></p>
-        <p id="score-message" class="mx-auto mt-4 max-w-xl text-slate-300"></p><button id="restart-btn" data-template-id="restart-button" type="button" class="canva-button mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold"> <i data-lucide="rotate-ccw" class="h-4 w-4"></i><span></span> </button>
-       </div>
-       <div class="px-6 py-8 sm:px-10">
-        <h2 data-template-id="review-title" class="canva-text font-extrabold"></h2>
-        <p data-template-id="review-helper" class="canva-text mt-1"></p>
-        <div id="review-list" class="mt-7 space-y-5"></div>
-       </div>
-      </div>
-     </section>
-    </main>
-   </div>
-  </div>
-  <div id="submit-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#07182f]/70 p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-   <div class="paper-shadow w-full max-w-md rounded-3xl bg-white p-7">
-    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#fff1c7] text-[#9a6500]">
-     <i data-lucide="circle-alert" class="h-6 w-6"></i>
     </div>
-    <h2 id="modal-title" data-template-id="submit-modal-title" class="canva-text mt-5 font-extrabold"></h2>
-    <p id="modal-copy" data-template-id="submit-modal-copy" class="canva-text mt-2 leading-6"></p>
-    <div class="mt-6 flex gap-3"><button id="cancel-submit" data-template-id="cancel-submit-button" type="button" class="canva-button flex-1 rounded-xl py-3 font-bold"></button> <button id="confirm-submit" data-template-id="confirm-submit-button" type="button" class="canva-button flex-1 rounded-xl py-3 font-bold"></button>
+   </header>
+   <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <section data-template-id="test-rules" class="canva-banner mb-6 rounded-2xl border border-[#f3d78f] bg-[#fff6db] px-5 py-4 flex gap-3"><i data-lucide="shield-alert" class="w-5 h-5 text-[#9a6500] shrink-0 mt-0.5"></i>
+     <p data-template-id="rules-text" class="canva-text text-sm text-[#624500] leading-6"></p>
+    </section>
+    <div id="test-view" class="grid lg:grid-cols-[1fr_280px] gap-6 items-start">
+     <section class="paper-shadow rounded-3xl bg-[#fffdf8] overflow-hidden">
+      <div class="px-6 sm:px-9 pt-7 pb-5 border-b border-slate-200 flex items-center justify-between gap-4">
+       <div>
+        <p id="question-count" class="text-xs uppercase tracking-[0.15em] text-[#60708a] font-bold">Question 1 of 60</p>
+        <p data-template-id="question-category" class="canva-text mt-1 text-sm font-semibold text-[#24588b]"></p>
+       </div>
+       <div id="answered-status" class="rounded-full px-3 py-1.5 bg-[#edf2f7] text-xs font-bold text-[#46617d]">
+        Not answered
+       </div>
+      </div>
+      <div id="question-panel" class="fade-in px-6 sm:px-9 py-8 sm:py-10">
+       <h2 id="question-text" class="text-2xl sm:text-3xl font-bold leading-tight text-[#10213d]"></h2>
+       <form id="answer-form" class="mt-8 space-y-3" aria-label="Question answers"></form>
+      </div>
+      <div class="px-6 sm:px-9 py-5 bg-[#f4f7fa] border-t border-slate-200 flex items-center justify-between gap-3"><button id="prev-btn" data-template-id="previous-button" type="button" class="canva-button inline-flex items-center gap-2 rounded-xl border border-[#b8c4d2] px-4 py-3 font-bold text-sm text-[#334b67] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"> <i data-lucide="arrow-left" class="w-4 h-4"></i><span></span> </button> <button id="next-btn" data-template-id="next-button" type="button" class="canva-button inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-sm text-white bg-[#10213d] hover:bg-[#24588b]"> <span></span><i data-lucide="arrow-right" class="w-4 h-4"></i> </button>
+      </div>
+     </section>
+     <aside class="paper-shadow rounded-3xl bg-white p-5 lg:sticky lg:top-5">
+      <h2 data-template-id="navigator-title" class="canva-text font-extrabold text-[#10213d]"></h2>
+      <p data-template-id="navigator-helper" class="canva-text mt-1 text-sm text-[#60708a]"></p>
+      <div id="question-nav" class="mt-5 grid grid-cols-6 gap-2" aria-label="Question navigation"></div>
+      <div class="mt-6 pt-5 border-t border-slate-200">
+       <div class="flex justify-between text-sm mb-3"><span data-template-id="progress-label" class="canva-text text-[#60708a]"></span> <strong id="progress-number" class="text-[#10213d]">0 / 60</strong>
+       </div>
+       <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+        <div id="progress-bar" class="h-full bg-[#f5b82e] transition-all duration-300" style="width:0%"></div>
+       </div><button id="submit-btn" data-template-id="submit-button" type="button" class="canva-button mt-6 w-full rounded-xl py-3.5 font-extrabold text-[#10213d] bg-[#f5b82e] hover:bg-[#e5a715] transition"></button>
+      </div>
+     </aside>
+    </div>
+    <section id="results-view" class="hidden">
+     <div class="paper-shadow rounded-3xl overflow-hidden bg-[#fffdf8]">
+      <div data-template-id="results-hero" class="canva-banner px-6 sm:px-10 py-10 bg-[#10213d] text-white text-center">
+       <p data-template-id="results-kicker" class="canva-text uppercase tracking-[0.18em] text-xs font-bold text-[#f5b82e]"></p>
+       <h2 data-template-id="results-title" class="canva-text mt-2 font-extrabold"></h2>
+       <div id="score-display" class="mt-6 text-6xl sm:text-7xl font-extrabold text-[#f5b82e]">
+        0%
+       </div>
+       <p id="score-detail" class="mt-3 text-slate-200 font-medium"></p>
+       <p id="score-message" class="mt-4 max-w-xl mx-auto text-slate-300"></p><button id="restart-btn" data-template-id="restart-button" type="button" class="canva-button mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold bg-white text-[#10213d] hover:bg-[#f5b82e]"> <i data-lucide="rotate-ccw" class="w-4 h-4"></i><span></span> </button>
+      </div>
+      <div class="px-6 sm:px-10 py-8">
+       <h2 data-template-id="review-title" class="canva-text font-extrabold text-[#10213d]"></h2>
+       <p data-template-id="review-helper" class="canva-text mt-1 text-[#60708a]"></p>
+       <div id="review-list" class="mt-7 space-y-5"></div>
+      </div>
+     </div>
+    </section>
+   </main>
+  </div>
+  <div id="submit-modal" class="hidden fixed inset-0 z-50 p-4 bg-[#07182f]/70 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+   <div class="w-full max-w-md rounded-3xl bg-white p-7 paper-shadow">
+    <div class="w-12 h-12 rounded-full bg-[#fff1c7] text-[#9a6500] flex items-center justify-center">
+     <i data-lucide="circle-alert" class="w-6 h-6"></i>
+    </div>
+    <h2 id="modal-title" data-template-id="submit-modal-title" class="canva-text mt-5 font-extrabold text-[#10213d]"></h2>
+    <p id="modal-copy" data-template-id="submit-modal-copy" class="canva-text mt-2 text-[#60708a] leading-6"></p>
+    <div class="mt-6 flex gap-3"><button id="cancel-submit" data-template-id="cancel-submit-button" type="button" class="canva-button flex-1 rounded-xl py-3 font-bold border border-slate-300 bg-white text-[#334b67] hover:bg-slate-50"></button> <button id="confirm-submit" data-template-id="confirm-submit-button" type="button" class="canva-button flex-1 rounded-xl py-3 font-bold bg-[#10213d] text-white hover:bg-[#24588b]"></button>
     </div>
    </div>
   </div>
@@ -206,75 +120,80 @@
       ["What is 25% of 240?",["50","60","75","90"],"60","25% = 0.25. Multiply 240 × 0.25 = 60."],
       ["Solve: 3x + 7 = 28",["5","7","9","12"],"7","Subtract 7 from both sides: 3x = 21. Divide by 3: x = 7."],
       ["A jacket costs $80 and is reduced by 15%. What is the sale price?",["$62","$68","$72","$76"],"$68","15% of $80 is $12. Subtract: $80 − $12 = $68."],
-      ["What is the area of a rectangle that is 12 cm long and 7 cm wide?",["19 cm²","38 cm²","84 cm²","96 cm²"],"84 cm²","Area = length × width = 12 × 7 = 84 cm²."],
+      ["What is the area of a rectangle that is 12 cm long and 7 cm wide?",["19 cm²","38 cm²","84 cm²","96 cm²"],"84 cm²","Area of a rectangle = length × width = 12 × 7 = 84 cm²."],
       ["Evaluate: 5² − 3²",["6","16","22","34"],"16","5² = 25 and 3² = 9. Then 25 − 9 = 16."],
-      ["A recipe uses 3/4 cup of sugar for one batch. How much is needed for 3 batches?",["1 1/4 cups","1 3/4 cups","2 1/4 cups","2 3/4 cups"],"2 1/4 cups","Multiply 3/4 × 3 = 9/4 = 2 1/4 cups."],
+      ["A recipe uses 3/4 cup of sugar for one batch. How much sugar is needed for 3 batches?",["1 1/4 cups","1 3/4 cups","2 1/4 cups","2 3/4 cups"],"2 1/4 cups","Multiply 3/4 × 3 = 9/4 = 2 1/4 cups."],
       ["What is the slope of the line through (2, 3) and (6, 11)?",["1/2","2","4","8"],"2","Slope = (11 − 3) / (6 − 2) = 8/4 = 2."],
       ["A car travels 180 miles in 3 hours. What is its average speed?",["45 mph","60 mph","90 mph","540 mph"],"60 mph","Average speed = distance ÷ time = 180 ÷ 3 = 60 mph."],
       ["Simplify: 4(2x − 3) + 5",["8x − 7","8x − 12","8x + 2","13x − 7"],"8x − 7","Distribute 4: 8x − 12 + 5 = 8x − 7."],
       ["What is the circumference of a circle with radius 5? Use π ≈ 3.14.",["15.7","31.4","78.5","157"],"31.4","Circumference = 2πr = 2 × 3.14 × 5 = 31.4."],
-      ["Which fraction is equal to 0.375?",["1/4","3/8","5/8","3/4"],"3/8","0.375 = 375/1000 = 3/8."],
-      ["Find the mean of 8, 10, 12, and 18.",["10","12","12.5","48"],"12","The sum is 48. Then 48 ÷ 4 = 12."],
-      ["A bag contains 4 red, 3 blue, and 3 green marbles. What is P(blue)?",["3/4","3/10","1/3","7/10"],"3/10","There are 10 marbles total and 3 are blue."],
+      ["Which fraction is equal to 0.375?",["1/4","3/8","5/8","3/4"],"3/8","0.375 = 375/1000. Simplify by 125 to get 3/8."],
+      ["Find the mean of 8, 10, 12, and 18.",["10","12","12.5","48"],"12","Add values: 8 + 10 + 12 + 18 = 48. Then 48 ÷ 4 = 12."],
+      ["A bag contains 4 red, 3 blue, and 3 green marbles. What is P(blue)?",["3/4","3/10","1/3","7/10"],"3/10","There are 10 marbles total and 3 are blue, so probability = 3/10."],
       ["Solve: 2(x − 4) = 18",["5","9","13","22"],"13","Divide by 2: x − 4 = 9. Add 4: x = 13."],
-      ["What is the volume of a rectangular prism measuring 4 × 3 × 6?",["13 units³","24 units³","72 units³","144 units³"],"72 units³","Volume = length × width × height = 4 × 3 × 6 = 72."],
-      ["A number increased by 9 is 24. What is the number?",["13","15","24","33"],"15","n + 9 = 24, so n = 15."],
-      ["Convert 2.5 hours to minutes.",["25","120","150","250"],"150","There are 60 minutes in one hour: 2.5 × 60 = 150."],
+      ["What is the volume of a rectangular prism measuring 4 × 3 × 6?",["13 units³","24 units³","72 units³","144 units³"],"72 units³","Volume = length × width × height = 4 × 3 × 6 = 72 units³."],
+      ["A number increased by 9 is 24. What is the number?",["13","15","24","33"],"15","Let n be the number: n + 9 = 24, so n = 15."],
+      ["Convert 2.5 hours to minutes.",["25","120","150","250"],"150","There are 60 minutes in one hour: 2.5 × 60 = 150 minutes."],
       ["What is the median of 4, 7, 9, 12, 20?",["7","9","10.4","12"],"9","The ordered middle value is 9."],
-      ["If y = 4x − 1, what is y when x = 3?",["7","11","12","13"],"11","y = 4(3) − 1 = 11."],
-      ["A $50 item has 8% sales tax. What is the total cost?",["$50.08","$54.00","$58.00","$400.00"],"$54.00","Tax is $4. Add it to $50."],
+      ["If y = 4x − 1, what is y when x = 3?",["7","11","12","13"],"11","Substitute x = 3: y = 4(3) − 1 = 11."],
+      ["A $50 item has 8% sales tax. What is the total cost?",["$50.08","$54.00","$58.00","$400.00"],"$54.00","Tax is 0.08 × 50 = $4. Add it to $50 for $54."],
       ["What is √144?",["10","11","12","72"],"12","12 × 12 = 144."],
-      ["A triangle has angles of 55° and 65°. What is its third angle?",["50°","60°","70°","120°"],"60°","Triangle angles total 180°. 180 − 55 − 65 = 60."],
-      ["Solve: x/5 = 9",["1.8","4","14","45"],"45","Multiply both sides by 5."],
-      ["What is 3/5 + 1/4?",["4/9","7/20","17/20","4/5"],"17/20","3/5 = 12/20 and 1/4 = 5/20. Total = 17/20."],
+      ["A triangle has angles of 55° and 65°. What is its third angle?",["50°","60°","70°","120°"],"60°","Triangle angles total 180°. 180 − 55 − 65 = 60°."],
+      ["Solve: x/5 = 9",["1.8","4","14","45"],"45","Multiply both sides by 5: x = 45."],
+      ["What is 3/5 + 1/4?",["4/9","7/20","17/20","4/5"],"17/20","Use denominator 20: 3/5 = 12/20 and 1/4 = 5/20. Total = 17/20."],
       ["A line parallel to y = 3x + 2 has what slope?",["−3","−1/3","2","3"],"3","Parallel lines have the same slope."],
       ["A shirt originally costs $40. Its price increases by 20%. What is the new price?",["$44","$48","$50","$60"],"$48","20% of 40 is 8. Add: 40 + 8 = 48."],
-      ["What is the perimeter of a square with side length 9 cm?",["18 cm","36 cm","81 cm","324 cm"],"36 cm","Perimeter = 4 × side = 4 × 9 = 36 cm."],
-      ["Solve: 5x − 12 = 3x + 8",["−10","2","10","20"],"10","2x − 12 = 8, so 2x = 20 and x = 10."],
-      ["What is 0.6 written as a percent?",["0.6%","6%","60%","600%"],"60%","Multiply the decimal by 100."],
-      ["The ratio of boys to girls is 3:5. If there are 24 boys, how many girls are there?",["15","30","40","72"],"40","3 parts = 24, so 1 part = 8. Girls = 5 × 8."],
-      ["Which expression represents seven less than twice a number n?",["2n + 7","2n − 7","7 − 2n","n/2 − 7"],"2n − 7","Twice a number is 2n; seven less means subtract 7."],
-      ["What is the area of a circle with radius 4? Use π ≈ 3.14.",["12.56","25.12","50.24","100.48"],"50.24","Area = πr² = 3.14 × 16 = 50.24."],
-      ["A worker earns $18 per hour for 35 hours. What are the weekly earnings?",["$530","$630","$700","$1,530"],"$630","18 × 35 = 630."],
-      ["What is the value of |−13|?",["−13","0","13","26"],"13","Absolute value is distance from zero."],
+      ["What is the perimeter of a square with side length 9 cm?",["18 cm","36 cm","81 cm","324 cm"],"36 cm","Perimeter of a square = 4 × side = 4 × 9 = 36 cm."],
+      ["Solve: 5x − 12 = 3x + 8",["−10","2","10","20"],"10","Subtract 3x: 2x − 12 = 8. Add 12: 2x = 20, so x = 10."],
+      ["What is 0.6 written as a percent?",["0.6%","6%","60%","600%"],"60%","Multiply a decimal by 100 to write it as a percent."],
+      ["The ratio of boys to girls is 3:5. If there are 24 boys, how many girls are there?",["15","30","40","72"],"40","3 parts = 24, so 1 part = 8. Girls = 5 × 8 = 40."],
+      ["Which expression represents 'seven less than twice a number n'?",["2n + 7","2n − 7","7 − 2n","n/2 − 7"],"2n − 7","Twice a number is 2n; seven less means subtract 7."],
+      ["What is the area of a circle with radius 4? Use π ≈ 3.14.",["12.56","25.12","50.24","100.48"],"50.24","Area = πr² = 3.14 × 4² = 3.14 × 16 = 50.24."],
+      ["A worker earns $18 per hour for 35 hours. What are the weekly earnings?",["$530","$630","$700","$1,530"],"$630","Multiply hourly wage by hours: 18 × 35 = 630."],
+      ["What is the value of |−13|?",["−13","0","13","26"],"13","Absolute value is a number's distance from zero."],
       ["A population of 500 increases by 10%. What is the new population?",["450","505","510","550"],"550","10% of 500 is 50. Add: 500 + 50 = 550."],
-      ["Solve the inequality: 2x + 5 > 17",["x > 6","x < 6","x > 11","x < 11"],"x > 6","Subtract 5, then divide by 2."],
-      ["What is the simple interest on $1,000 at 5% for 2 years?",["$50","$100","$500","$1,100"],"$100","Interest = principal × rate × time = 1000 × .05 × 2."],
+      ["Solve the inequality: 2x + 5 > 17",["x > 6","x < 6","x > 11","x < 11"],"x > 6","Subtract 5: 2x > 12. Divide by 2: x > 6."],
+      ["What is the simple interest on $1,000 at 5% for 2 years?",["$50","$100","$500","$1,100"],"$100","Simple interest = principal × rate × time = 1000 × .05 × 2 = 100."],
       ["Which ordered pair is on the y-axis?",["(0, 5)","(5, 0)","(2, 2)","(−3, 4)"],"(0, 5)","Points on the y-axis have x-coordinate 0."],
-      ["A box is 2.5 m long, 1.2 m wide, and 2 m high. What is its volume?",["5 m³","6 m³","11.4 m³","12 m³"],"6 m³","2.5 × 1.2 × 2 = 6 m³."],
-      ["What is 7/8 ÷ 1/4?",["7/32","7/8","1 3/4","3 1/2"],"3 1/2","Multiply by the reciprocal: 7/8 × 4 = 28/8 = 3 1/2."],
-      ["If 4 notebooks cost $10, how much do 10 notebooks cost?",["$20","$25","$40","$100"],"$25","One notebook costs $2.50. Ten cost $25."],
+      ["A box is 2.5 m long, 1.2 m wide, and 2 m high. What is its volume?",["5 m³","6 m³","11.4 m³","12 m³"],"6 m³","Volume = 2.5 × 1.2 × 2 = 6 m³."],
+      ["What is 7/8 ÷ 1/4?",["7/32","7/8","1 3/4","3 1/2"],"3 1/2","Divide by a fraction by multiplying its reciprocal: 7/8 × 4/1 = 28/8 = 3 1/2."],
+      ["If 4 notebooks cost $10, how much do 10 notebooks cost at the same rate?",["$20","$25","$40","$100"],"$25","Each notebook costs $10 ÷ 4 = $2.50. Then 10 cost $25."],
       ["What is 30% of 90?",["18","27","30","60"],"27","0.30 × 90 = 27."],
-      ["Find x: 9 + x = 4x − 6",["3","5","6","15"],"5","15 + x = 4x, so 15 = 3x and x = 5."],
-      ["Which is greatest?",["0.49","1/2","48%","0.45"],"1/2","1/2 = 0.50, greater than the other values."],
-      ["A 15-foot ladder is placed 9 feet from a wall. How high does it reach?",["6 ft","9 ft","12 ft","24 ft"],"12 ft","height² = 15² − 9² = 144, so height = 12."],
-      ["What is the range of 2, 5, 5, 8, 11?",["5","6","9","11"],"9","Range = greatest − least = 11 − 2."],
-      ["A $120 bill is split equally among 8 people. How much does each pay?",["$12","$15","$18","$112"],"$15","120 ÷ 8 = 15."],
-      ["Simplify: 6a + 2b − 3a + 5b",["3a + 7b","3a − 3b","9a + 7b","9a − 3b"],"3a + 7b","Combine like terms."],
-      ["A 20-ounce drink is shared equally by 5 people. How many ounces each?",["2 oz","4 oz","5 oz","15 oz"],"4 oz","20 ÷ 5 = 4."],
-      ["What is the y-intercept of y = −2x + 7?",["−2","0","2","7"],"7","In y = mx + b, b is the y-intercept."],
+      ["Find x: 9 + x = 4x − 6",["3","5","6","15"],"5","Add 6: 15 + x = 4x. Subtract x: 15 = 3x, so x = 5."],
+      ["Which is greatest?",["0.49","1/2","48%","0.45"],"1/2","1/2 = 0.50, which is greater than 0.49, 0.48, and 0.45."],
+      ["A 15-foot ladder is placed 9 feet from a wall. How high up the wall does it reach?",["6 ft","9 ft","12 ft","24 ft"],"12 ft","Use the Pythagorean theorem: height² = 15² − 9² = 225 − 81 = 144, so height = 12."],
+      ["What is the range of 2, 5, 5, 8, 11?",["5","6","9","11"],"9","Range = greatest − least = 11 − 2 = 9."],
+      ["A $120 bill is split equally among 8 people. How much does each person pay?",["$12","$15","$18","$112"],"$15","Divide 120 by 8: 120 ÷ 8 = 15."],
+      ["Simplify: 6a + 2b − 3a + 5b",["3a + 7b","3a − 3b","9a + 7b","9a − 3b"],"3a + 7b","Combine like terms: 6a − 3a = 3a and 2b + 5b = 7b."],
+      ["A 20-ounce drink is shared equally by 5 people. How many ounces does each get?",["2 oz","4 oz","5 oz","15 oz"],"4 oz","20 ÷ 5 = 4 ounces."],
+      ["What is the y-intercept of y = −2x + 7?",["−2","0","2","7"],"7","In y = mx + b, b is the y-intercept. Here b = 7."],
       ["A store gives a 25% discount on a $64 item. What is the discount amount?",["$12","$16","$20","$48"],"$16","25% is one fourth. One fourth of $64 is $16."],
-      ["What is 2³ × 2⁴?",["2⁷","2¹²","4⁷","4¹²"],"2⁷","When multiplying same bases, add exponents."],
-      ["A map scale says 1 inch = 20 miles. Towns are 3.5 inches apart. How far?",["23.5 miles","60 miles","70 miles","700 miles"],"70 miles","3.5 × 20 = 70."],
-      ["What is the value of 18 − 3(4 + 2)?",["0","6","12","90"],"0","4 + 2 = 6, then 18 − 3(6) = 0."],
-      ["A cylinder has radius 3 and height 10. What is its volume using π ≈ 3.14?",["94.2","282.6","565.2","942"],"282.6","πr²h = 3.14 × 3² × 10 = 282.6."],
-      ["If 6 pens cost $4.50, what is the cost of one pen?",["$0.50","$0.75","$1.33","$2.25"],"$0.75","4.50 ÷ 6 = 0.75."],
-      ["A score rises from 70 to 84. What is the percent increase?",["14%","20%","70%","84%"],"20%","Increase is 14. 14 ÷ 70 = .20 = 20%."],
-      ["Solve: 4(x + 2) = 36",["7","8","9","11"],"7","x + 2 = 9, so x = 7."],
-      ["What is the mode of 3, 6, 6, 7, 9, 9, 9, 10?",["6","7","9","10"],"9","9 occurs most often."],
-      ["A plane ticket costs $250 plus a baggage fee of $35. What is the total?",["$215","$250","$285","$8,750"],"$285","250 + 35 = 285."]
+      ["What is 2³ × 2⁴?",["2⁷","2¹²","4⁷","4¹²"],"2⁷","When multiplying same bases, add exponents: 2³ × 2⁴ = 2⁷."],
+      ["A map scale says 1 inch = 20 miles. Two towns are 3.5 inches apart on the map. How far apart are they?",["23.5 miles","60 miles","70 miles","700 miles"],"70 miles","Multiply 3.5 inches by 20 miles per inch: 3.5 × 20 = 70."],
+      ["What is the value of 18 − 3(4 + 2)?",["0","6","12","90"],"0","Calculate inside parentheses first: 4 + 2 = 6. Then 18 − 3(6) = 18 − 18 = 0."],
+      ["A cylinder has radius 3 and height 10. What is its volume using π ≈ 3.14?",["94.2","282.6","565.2","942"],"282.6","Volume = πr²h = 3.14 × 3² × 10 = 282.6."],
+      ["If 6 pens cost $4.50, what is the cost of one pen?",["$0.50","$0.75","$1.33","$2.25"],"$0.75","Divide total cost by number of pens: 4.50 ÷ 6 = 0.75."],
+      ["A score rises from 70 to 84. What is the percent increase?",["14%","20%","70%","84%"],"20%","Increase is 14. Divide by original: 14 ÷ 70 = 0.20 = 20%."],
+      ["Solve: 4(x + 2) = 36",["7","8","9","11"],"7","Divide by 4: x + 2 = 9. Subtract 2: x = 7."],
+      ["What is the mode of 3, 6, 6, 7, 9, 9, 9, 10?",["6","7","9","10"],"9","The mode is the value that occurs most often. 9 occurs three times."],
+      ["A plane ticket costs $250 plus a baggage fee of $35. What is the total?",["$215","$250","$285","$8,750"],"$285","Add the ticket price and baggage fee: 250 + 35 = 285."]
     ];
 
     const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
     let questions = [], answers = {}, current = 0, seconds = 5400, timerId = null, submitted = false;
 
-    function updateTimer() {
-      const h = String(Math.max(0, Math.floor(seconds / 3600))).padStart(2, "0");
-      const m = String(Math.max(0, Math.floor((seconds % 3600) / 60))).padStart(2, "0");
-      const s = String(Math.max(0, seconds % 60)).padStart(2, "0");
-      const timer = document.getElementById("timer");
-      timer.textContent = `${h}:${m}:${s}`;
-      timer.classList.toggle("text-red-300", seconds < 300);
+    function startTest() {
+      questions = shuffle(bank).slice(0, 60).map((q, i) => ({
+        id: i, question: q[0], options: shuffle(q[1]), correct: q[2], explanation: q[3]
+      }));
+      answers = {}; current = 0; seconds = 5400; submitted = false;
+      document.getElementById("results-view").classList.add("hidden");
+      document.getElementById("test-view").classList.remove("hidden");
+      clearInterval(timerId);
+      timerId = setInterval(tick, 1000);
+      renderQuestion();
+      renderNavigator();
+      updateTimer();
     }
 
     function tick() {
@@ -283,54 +202,31 @@
       if (seconds <= 0) submitTest(true);
     }
 
-    function startTest() {
-      questions = shuffle(bank).slice(0, 60).map((q, i) => ({ id:i, question:q[0], options:shuffle(q[1]), correct:q[2], explanation:q[3] }));
-      answers = {};
-      current = 0;
-      seconds = 5400;
-      submitted = false;
-      document.getElementById("cover-view").classList.add("hidden");
-      document.getElementById("assessment-view").classList.remove("hidden");
-      document.getElementById("results-view").classList.add("hidden");
-      document.getElementById("test-view").classList.remove("hidden");
-      clearInterval(timerId);
-      timerId = setInterval(tick, 1000);
-      updateTimer();
-      renderQuestion();
-      renderNavigator();
-      window.scrollTo({ top:0, behavior:"smooth" });
+    function updateTimer() {
+      const h = String(Math.max(0, Math.floor(seconds / 3600))).padStart(2, "0");
+      const m = String(Math.max(0, Math.floor((seconds % 3600) / 60))).padStart(2, "0");
+      const s = String(Math.max(0, seconds % 60)).padStart(2, "0");
+      document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+      document.getElementById("timer").classList.toggle("text-red-300", seconds < 300);
     }
 
     function renderQuestion() {
       const q = questions[current];
       document.getElementById("question-count").textContent = `Question ${current + 1} of ${questions.length}`;
       document.getElementById("question-text").textContent = q.question;
-      const panel = document.getElementById("question-panel");
-      panel.classList.remove("fade-in");
-      void panel.offsetWidth;
-      panel.classList.add("fade-in");
-
+      document.getElementById("question-panel").classList.remove("fade-in");
+      void document.getElementById("question-panel").offsetWidth;
+      document.getElementById("question-panel").classList.add("fade-in");
       const form = document.getElementById("answer-form");
-      form.replaceChildren();
+      form.innerHTML = "";
       q.options.forEach((option, index) => {
         const id = `option-${current}-${index}`;
         const label = document.createElement("label");
-        label.className = `choice-option flex w-full cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 sm:p-5 ${answers[q.id] === option ? "selected" : "border-slate-200 bg-white"}`;
+        label.className = `choice-option flex items-center gap-4 w-full cursor-pointer rounded-2xl border-2 p-4 sm:p-5 ${answers[q.id] === option ? "selected" : "border-slate-200 bg-white"}`;
         label.htmlFor = id;
-        const input = document.createElement("input");
-        input.id = id;
-        input.name = `question-${current}`;
-        input.type = "radio";
-        input.value = option;
-        input.checked = answers[q.id] === option;
-        input.className = "sr-only";
-        const letter = document.createElement("span");
-        letter.className = "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-[#93a4b8] text-sm font-bold text-[#334b67]";
-        letter.textContent = String.fromCharCode(65 + index);
-        const text = document.createElement("span");
-        text.className = "text-base font-medium text-[#10213d] sm:text-lg";
-        text.textContent = option;
-        label.append(input, letter, text);
+        label.innerHTML = `<input id="${id}" name="question-${current}" type="radio" value="${option}" class="sr-only" ${answers[q.id] === option ? "checked" : ""}>
+          <span class="w-8 h-8 shrink-0 rounded-full border-2 border-[#93a4b8] flex items-center justify-center font-bold text-sm text-[#334b67]">${String.fromCharCode(65 + index)}</span>
+          <span class="text-base sm:text-lg font-medium text-[#10213d]">${option}</span>`;
         label.addEventListener("click", () => {
           answers[q.id] = option;
           renderQuestion();
@@ -338,17 +234,16 @@
         });
         form.appendChild(label);
       });
-
       document.getElementById("prev-btn").disabled = current === 0;
-      document.querySelector("#next-btn span").textContent = current === questions.length - 1 ? "Review answers" : "Next question";
-      const status = document.getElementById("answered-status");
-      status.textContent = answers[q.id] ? "Answered" : "Not answered";
-      status.className = answers[q.id] ? "rounded-full px-3 py-1.5 bg-[#dcebd8] text-xs font-bold text-[#185c33]" : "rounded-full px-3 py-1.5 bg-[#edf2f7] text-xs font-bold text-[#46617d]";
+      const next = document.getElementById("next-btn");
+      next.querySelector("span").textContent = current === questions.length - 1 ? "Review answers" : "Next question";
+      document.getElementById("answered-status").textContent = answers[q.id] ? "Answered" : "Not answered";
+      document.getElementById("answered-status").className = answers[q.id] ? "rounded-full px-3 py-1.5 bg-[#dcebd8] text-xs font-bold text-[#185c33]" : "rounded-full px-3 py-1.5 bg-[#edf2f7] text-xs font-bold text-[#46617d]";
     }
 
     function renderNavigator() {
       const nav = document.getElementById("question-nav");
-      nav.replaceChildren();
+      nav.innerHTML = "";
       questions.forEach((q, index) => {
         const button = document.createElement("button");
         button.type = "button";
@@ -366,60 +261,48 @@
     function openSubmitModal() {
       document.getElementById("modal-copy").textContent = `You have answered ${Object.keys(answers).length} of ${questions.length} questions. Unanswered questions will be marked incorrect.`;
       document.getElementById("submit-modal").classList.remove("hidden");
-      document.getElementById("submit-modal").classList.add("flex");
     }
 
-    function submitTest(timeUp) {
+    function submitTest(timeUp = false) {
       if (submitted) return;
       submitted = true;
       clearInterval(timerId);
       document.getElementById("submit-modal").classList.add("hidden");
-      document.getElementById("submit-modal").classList.remove("flex");
       document.getElementById("test-view").classList.add("hidden");
       document.getElementById("results-view").classList.remove("hidden");
       const correct = questions.filter(q => answers[q.id] === q.correct).length;
-      const score = Math.round(correct / questions.length * 100);
+      const score = Math.round((correct / questions.length) * 100);
       document.getElementById("score-display").textContent = `${score}%`;
       document.getElementById("score-detail").textContent = `${correct} correct out of ${questions.length}${timeUp ? " · Time expired" : ""}`;
       document.getElementById("score-message").textContent = score >= 80 ? "Strong work. Review any missed skills, then try another randomized attempt." : score >= 60 ? "You are building a solid foundation. Use the explanations below to strengthen missed concepts." : "Keep practicing. Study the explanations below and focus on one topic at a time before your next attempt.";
       renderReview();
-      window.scrollTo({ top:0, behavior:"smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function renderReview() {
       const list = document.getElementById("review-list");
-      list.replaceChildren();
+      list.innerHTML = "";
       questions.forEach((q, index) => {
         const isCorrect = answers[q.id] === q.correct;
         const card = document.createElement("article");
         card.className = `rounded-2xl border p-5 sm:p-6 ${isCorrect ? "border-[#b9dabe] bg-[#f3fbf3]" : "border-[#f0c2bd] bg-[#fff8f6]"}`;
-        const title = document.createElement("p");
-        title.className = `text-xs uppercase tracking-widest font-bold ${isCorrect ? "text-[#327545]" : "text-[#b74739]"}`;
-        title.textContent = `Question ${index + 1} · ${isCorrect ? "Correct" : "Review"}`;
-        const question = document.createElement("h3");
-        question.className = "mt-2 text-lg font-bold text-[#10213d]";
-        question.textContent = q.question;
-        const answersGrid = document.createElement("div");
-        answersGrid.className = "mt-4 grid gap-3 text-sm sm:grid-cols-2";
-        const your = document.createElement("p");
-        your.className = "rounded-xl bg-white/80 p-3 text-[#52657d]";
-        your.innerHTML = "<strong class='text-[#10213d]'>Your answer:</strong> ";
-        your.append(document.createTextNode(answers[q.id] || "No answer selected"));
-        const correct = document.createElement("p");
-        correct.className = "rounded-xl bg-white/80 p-3 text-[#52657d]";
-        correct.innerHTML = "<strong class='text-[#10213d]'>Correct answer:</strong> ";
-        correct.append(document.createTextNode(q.correct));
-        answersGrid.append(your, correct);
-        const explanation = document.createElement("p");
-        explanation.className = "mt-4 text-sm leading-6 text-[#40556e]";
-        explanation.innerHTML = "<strong class='text-[#10213d]'>Explanation:</strong> ";
-        explanation.append(document.createTextNode(q.explanation));
-        card.append(title, question, answersGrid, explanation);
+        card.innerHTML = `
+          <div class="flex items-start gap-3">
+            <div class="mt-0.5 w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-bold ${isCorrect ? "bg-[#dcebd8] text-[#185c33]" : "bg-[#f9ddd8] text-[#a53325]"}">${isCorrect ? "✓" : "×"}</div>
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-widest font-bold ${isCorrect ? "text-[#327545]" : "text-[#b74739]"}">Question ${index + 1} · ${isCorrect ? "Correct" : "Review"}</p>
+              <h3 class="mt-2 text-lg font-bold text-[#10213d]">${q.question}</h3>
+              <div class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+                <p class="rounded-xl bg-white/80 p-3 text-[#52657d]"><strong class="text-[#10213d]">Your answer:</strong> ${answers[q.id] || "No answer selected"}</p>
+                <p class="rounded-xl bg-white/80 p-3 text-[#52657d]"><strong class="text-[#10213d]">Correct answer:</strong> ${q.correct}</p>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-[#40556e]"><strong class="text-[#10213d]">Explanation:</strong> ${q.explanation}</p>
+            </div>
+          </div>`;
         list.appendChild(card);
       });
     }
 
-    document.getElementById("start-btn").addEventListener("click", startTest);
     document.getElementById("prev-btn").addEventListener("click", () => {
       if (current > 0) { current--; renderQuestion(); renderNavigator(); }
     });
@@ -428,10 +311,7 @@
       else openSubmitModal();
     });
     document.getElementById("submit-btn").addEventListener("click", openSubmitModal);
-    document.getElementById("cancel-submit").addEventListener("click", () => {
-      document.getElementById("submit-modal").classList.add("hidden");
-      document.getElementById("submit-modal").classList.remove("flex");
-    });
+    document.getElementById("cancel-submit").addEventListener("click", () => document.getElementById("submit-modal").classList.add("hidden"));
     document.getElementById("confirm-submit").addEventListener("click", () => submitTest(false));
     document.getElementById("restart-btn").addEventListener("click", startTest);
     document.getElementById("fullscreen-btn").addEventListener("click", async () => {
@@ -441,7 +321,16 @@
       } catch (_) {}
     });
 
-    document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
+    ["copy", "cut", "contextmenu", "dragstart"].forEach(eventName => document.addEventListener(eventName, e => e.preventDefault()));
+    document.addEventListener("keydown", e => {
+      if ((e.ctrlKey || e.metaKey) && ["c", "x", "p", "s", "u"].includes(e.key.toLowerCase())) e.preventDefault();
+      if (e.key === "PrintScreen") e.preventDefault();
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      startTest();
+    });
   </script>
  </body>
 </html>
